@@ -1,0 +1,71 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- institute_name:
+    use_entities:
+    - ORG
+- institute_location:
+    use_entities:
+    - GPE
+- admissions_query:
+    use_entities: []
+entities:
+- ORG
+- GPE
+slots:
+  GPE:
+    type: text
+    influence_conversation: true
+  ORG:
+    type: categorical
+    influence_conversation: true
+    values:
+    - conestoga college
+    - university of waterloo
+    - university of guelph
+    - wilfred laurier university
+  requested_slot:
+    type: text
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_student_admissions_form_ORG:
+  - text: which educational institute you want to check for?
+  - text: In which educational institute?
+  utter_ask_GPE:
+  - text: any specific campus?
+  utter_test_admissions_query_success:
+  - text: "Please go through the link for admission related information in Ontario\
+      \ institutions, \n Institute: {ORG}"
+  utter_institute_not_supported:
+  - text: "Sorry, we don't support the entered educational institute. We support the\
+      \ following educational institutes: \n 1. Conestoga college \n 2. University\
+      \ of Waterloo \n 3. University of Guelph \n 4. Wilfred Laurier University"
+actions:
+- action_admissions_query_submit
+- validate_student_admissions_form
+forms:
+  student_admissions_form:
+    ORG:
+    - entity: ORG
+      type: from_entity
