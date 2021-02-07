@@ -93,43 +93,35 @@ nlu:
   examples: |
     - how can I get admission in [guelph university](ORG) in [Canada](GPE)?
     - how can I get admission in [Guelph university](ORG)?
+    - how can I get admissions in colleges in [Ontario](GPE)?
+    - admission in [ontario](GPE) college?
+    - admission in [waterloo university](ORG)?
+    - admission in [university of waterloo](ORG)?
     - how to get admission in [Conestoga](ORG) in [Kitchener](GPE) campus?
     - how to get admission in [Waterloo university](ORG)?
-    - how to get admission in [Waterloo university](ORG)?
     - admission in [Canada](GPE)?
-    - How can I get admission in [Canadian](GPE) institute?
-    - how to get admission in [Canadian](GPE) institute?
+    - How can I get admission in [Canadian](GPE) institution?
+    - how to get admission in [Canadian](GPE) institution?
     - how can I get admission in [Laurier university](ORG)?
     - How can I get admission in [Canada](GPE)?
-    - how can i get admission in [Conestoga](ORG) in [waterloo](GPE) campus?
     - Hi how can I get admission in [Conestoga](ORG) in [Kitchener](GPE)?
     - Hi, how can I get admission in [Conestoga](ORG) in [Kitchener](GPE)?
     - How can I get admission in [Conestoga](ORG) in [Kitchener](GPE)?
-    - how can I get admission in [Waterloo university](ORG) in [Waterloo](GPE) campus?
     - how can I get admission in [Waterloo university](ORG)?
     - how can I get admission in [Conestoga](ORG) at [Doon campus](GPE)?
     - how can I get admission in [Conestoga](ORG) in [Kitchener](GPE)?
-    - Admission in [Laurier University](ORG) in [Waterloo](GPE)?
     - Admission in [Wilfred Laurier University](ORG)?
     - Admission in [Wilfred University](ORG)?
     - Admission in [Laurier](ORG)?
     - how can I get admission in any college in [Canada](GPE)?
     - i want to know admission criteria for [Conestoga](ORG)
-# - intent: institute_location
-#   examples: |
-#     - [doon campus](GPE)
-#     - [doon](GPE)
-#     - [waterloo](GPE)
-#     - [Waterloo campus](GPE)
-#     - [Kitchener](GPE)
-#     - [downtown](GPE)
-#     - [Brantford](GPE)
-#     - [guelph](GPE)
-#     - [Guelph campus](GPE)
+    - i want to know admission criteria for [Mobile Solutions development](program) program in [Conestoga](ORG)
+    - admissions in [Computer Applications Development](program) program in [Conestoga college](ORG)
+    - i want to take admission in [Project Management](program) at [Conestoga](ORG)
 - synonym: ORG
   examples: |
     - college
-    - educational institute
+    - educational institution
     - university
     - school
 - synonym: GPE
@@ -137,23 +129,30 @@ nlu:
     - campus
     - location
     - city
+    - province
 - synonym: conestoga college
   examples: |
     - conestoga
     - Conestoga
     - Conestoga College
+    - conestoga College
+    - Conestoga college
 - synonym: university of waterloo
   examples: |
     - University of Waterloo
     - University Of Waterloo
     - waterloo university
     - Waterloo University
+    - university of Waterloo
+    - University of waterloo
 - synonym: university of guelph
   examples: |
     - guelph university
     - Guelph University
     - guelph University
     - University of Guelph
+    - university of Guelph
+    - University of guelph
 - synonym: wilfred laurier university
   examples: |
     - Wilfred Laurier University
@@ -167,3 +166,23 @@ nlu:
     - Wilfred
     - laurier
     - Laurier
+- synonym: ontario
+  examples: |
+    - Ontario
+- synonym: computer applications development
+  examples: |
+    - Computer Applications
+    - computer application
+    - Computer Applications Development
+    - Computer Application Development
+    - CAD
+- synonym: mobile solutions development
+  examples: |
+    - Mobile solutions
+    - Mobile solutions development
+    - MSD
+    - Mobile Solutions Development
+    - mobile solution development
+- synonym: project management
+  examples: |
+    - Project Management

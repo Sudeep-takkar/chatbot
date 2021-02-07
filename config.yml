@@ -7,8 +7,8 @@ pipeline:
   - name: SpacyNLP
     model: "en_core_web_md"
     case_sensitive: false
-  - name: SpacyTokenizer
-  - name: SpacyFeaturizer
+  - name: WhitespaceTokenizer
+  # - name: SpacyFeaturizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
@@ -23,7 +23,7 @@ pipeline:
   # - name: SpacyNLP
   #   model: "en_core_web_md"
   #   case_sensitive: false
-  # - name: SpacyEntityExtractor
+  - name: CRFEntityExtractor
   #   dimensions: ["ORG", "GPE"]
   - name: EntitySynonymMapper
   # - name: "supervised_embeddings"

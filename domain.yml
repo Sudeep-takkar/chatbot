@@ -9,21 +9,26 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
-- institute_name:
-    use_entities:
-    - ORG
-- institute_location:
-    use_entities:
-    - GPE
 - admissions_query:
     use_entities: []
 entities:
 - ORG
 - GPE
+- PROGRAM
 slots:
   GPE:
-    type: text
+    type: categorical
     influence_conversation: true
+    values:
+    - ontario
+    - canada
+  PROGRAM:
+    type: categorical
+    influence_conversation: true
+    values:
+    - mobile solutions development
+    - project management
+    - computer applications development
   ORG:
     type: categorical
     influence_conversation: true
@@ -37,7 +42,7 @@ slots:
     influence_conversation: false
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: Hi, I am CampusBot. How can I help you?
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -47,25 +52,43 @@ responses:
   - text: Great, carry on!
   utter_goodbye:
   - text: Bye
+  - text: Have a good one
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_ask_student_admissions_form_ORG:
-  - text: which educational institute you want to check for?
-  - text: In which educational institute?
+  - text: which educational institution you want to check for?
+  - text: In which educational institution?
+  utter_ask_student_admissions_form_PROGRAM:
+  - text: which program you want to check for?
+  - text: In which program?
   utter_ask_GPE:
-  - text: any specific campus?
+  - text: any specific campus or location?
   utter_test_admissions_query_success:
-  - text: "Please go through the link for admission related information in Ontario\
-      \ institutions, \n Institute: {ORG}"
+  - text: 'Please go through the link for admissions related information at {ORG}:
+      {Link}'
+  utter_test_admissions_query_ontario_success:
+  - text: 'Please go through the link for admissions related information in Ontario:
+      {Link}'
   utter_institute_not_supported:
-  - text: "Sorry, we don't support the entered educational institute. We support the\
-      \ following educational institutes: \n 1. Conestoga college \n 2. University\
-      \ of Waterloo \n 3. University of Guelph \n 4. Wilfred Laurier University"
+  - text: "Sorry, we don't support the entered educational institution. We support\
+      \ the following educational institutions: \n 1. Conestoga college \n 2. University\
+      \ of Waterloo"
+  utter_location_not_supported:
+  - text: "Sorry, we don't support the entered location. We support the following\
+      \ locations: \n 1. Ontario"
+  utter_program_not_supported:
+  - text: "Sorry, we don't support the entered program. We support the following\
+      \ programs: \n 1. Mobile Solutions Development \n 2. Project Management \n 3. \
+      \ Computer Application Development"
 actions:
 - action_admissions_query_submit
 - validate_student_admissions_form
 forms:
   student_admissions_form:
+    GPE:
+    - entity: GPE
+      type: from_entity
     ORG:
     - entity: ORG
       type: from_entity
+    
