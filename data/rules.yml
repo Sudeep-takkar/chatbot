@@ -25,3 +25,25 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_admissions_query_submit
+
+# - rule: Student admissions form unsupported program
+#   condition:
+#   - active_loop: student_admissions_form
+#   - slot_was_set:
+#     - PROGRAM: 'mobile solutions development'
+#   steps:
+#   - action: utter_program_not_supported
+#   - action: utter_ask_student_admissions_form_PROGRAM
+#   - slot_was_set:
+#     - requested_slot: 'PROGRAM'
+#   wait_for_user_input: true
+
+# - rule: Submit Student Information Form
+#   condition:
+#   - active_loop: student_information_form
+#   steps:
+#   - action: student_information_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: student_information_form_submit

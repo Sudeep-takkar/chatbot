@@ -115,9 +115,17 @@ nlu:
     - Admission in [Laurier](ORG)?
     - how can I get admission in any college in [Canada](GPE)?
     - i want to know admission criteria for [Conestoga](ORG)
-    - i want to know admission criteria for [Mobile Solutions development](program) program in [Conestoga](ORG)
-    - admissions in [Computer Applications Development](program) program in [Conestoga college](ORG)
-    - i want to take admission in [Project Management](program) at [Conestoga](ORG)
+    - i want to know admission criteria for [Conestoga University](ORG)
+    - i want to know admission criteria for [Mobile Solutions development](PROGRAM) program in [Conestoga](ORG)
+    - admissions in [Computer Applications Development](PROGRAM) program in [Conestoga college](ORG)
+    - i want to take admission in [Project Management](PROGRAM) at [Conestoga](ORG)
+    - i want to take admission in [Process Quality Engineering](PROGRAM)
+    - i want to take admission in [Information Technology Network Security](PROGRAM)
+    - [Mobile Solutions development](PROGRAM)
+    - [Project Management](PROGRAM)
+    - [Process Quality Engineering](PROGRAM)
+    - [information technology network security](PROGRAM)
+    - [Computer Applications Development](PROGRAM)
 - synonym: ORG
   examples: |
     - college
@@ -137,6 +145,7 @@ nlu:
     - Conestoga College
     - conestoga College
     - Conestoga college
+    - conestoga university
 - synonym: university of waterloo
   examples: |
     - University of Waterloo
@@ -176,13 +185,21 @@ nlu:
     - Computer Applications Development
     - Computer Application Development
     - CAD
+    - Cad
+    - cad
 - synonym: mobile solutions development
   examples: |
     - Mobile solutions
     - Mobile solutions development
     - MSD
+    - Msd
+    - msd
     - Mobile Solutions Development
     - mobile solution development
 - synonym: project management
   examples: |
     - Project Management
+
+- intent: test_query
+  examples: |
+    - test query

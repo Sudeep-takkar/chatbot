@@ -11,32 +11,59 @@ intents:
 - bot_challenge
 - admissions_query:
     use_entities: []
+- test_query:
+    use_entities: []
 entities:
 - ORG
 - GPE
 - PROGRAM
+- NAME
+- ISALREADYAPPLIED
+- INTAKE
+- HIGHESTDEGREE
 slots:
   GPE:
     type: categorical
+    auto_fill: false
     influence_conversation: true
     values:
     - ontario
     - canada
-  PROGRAM:
+  HIGHESTDEGREE:
+    type: text
+    influence_conversation: false
+  INTAKE:
     type: categorical
-    influence_conversation: true
+    influence_conversation: false
     values:
-    - mobile solutions development
-    - project management
-    - computer applications development
+    - fall
+    - spring
+    - winter
+  ISALREADYAPPLIED:
+    type: bool
+    influence_conversation: false
+  NAME:
+    type: text
+    influence_conversation: true
   ORG:
     type: categorical
+    auto_fill: false
     influence_conversation: true
     values:
     - conestoga college
     - university of waterloo
     - university of guelph
     - wilfred laurier university
+  PROGRAM:
+    type: categorical
+    auto_fill: false
+    influence_conversation: true
+    values:
+    - mobile solutions development
+    - project management
+    - computer applications development
+    - process quality engineering
+    - information technology network security
   requested_slot:
     type: text
     influence_conversation: false
@@ -61,7 +88,7 @@ responses:
   utter_ask_student_admissions_form_PROGRAM:
   - text: which program you want to check for?
   - text: In which program?
-  utter_ask_GPE:
+  utter_ask_student_admissions_form_GPE:
   - text: any specific campus or location?
   utter_test_admissions_query_success:
   - text: 'Please go through the link for admissions related information at {ORG}:
@@ -69,20 +96,42 @@ responses:
   utter_test_admissions_query_ontario_success:
   - text: 'Please go through the link for admissions related information in Ontario:
       {Link}'
-  utter_institute_not_supported:
+  utter_ORG_not_supported:
   - text: "Sorry, we don't support the entered educational institution. We support\
       \ the following educational institutions: \n 1. Conestoga college \n 2. University\
       \ of Waterloo"
-  utter_location_not_supported:
+  utter_GPE_not_supported:
   - text: "Sorry, we don't support the entered location. We support the following\
       \ locations: \n 1. Ontario"
-  utter_program_not_supported:
-  - text: "Sorry, we don't support the entered program. We support the following\
-      \ programs: \n 1. Mobile Solutions Development \n 2. Project Management \n 3. \
-      \ Computer Application Development"
+  utter_PROGRAM_not_supported:
+  - text: "Sorry, we don't support the entered program. We support the following programs:\
+      \ \n 1. Mobile Solutions Development \n 2. Project Management \n 3. Computer\
+      \ Application Development"
+  utter_program_query_success:
+  - text: 'Please go through the link for admissions related information for program
+      {PROGRAM} at {ORG}: {Link}'
+  utter_ask_student_information_form_NAME:
+  - text: May I ask your name?
+  utter_ask_student_information_form_ORG:
+  - text: Hi {NAME}, in which college are you interested in?
+  utter_ask_student_information_form_PROGRAM:
+  - text: Okay and which program?
+  utter_ask_student_information_form_ISALREADYAPPLIED:
+  - text: I must say that's a good choice {NAME}. Have you already applied to {PROGRAM}
+      program at {ORG}?
+  utter_ask_student_information_form_INTAKE_interested:
+  - text: In which intake you are interested in?
+  utter_ask_student_information_form_INTAKE_applied:
+  - text: In which intake you have applied to?
+  utter_ask_student_information_form_HIGHESTDEGREE:
+  - text: May I ask your highest degree?
+  utter_ask_student_information_form_thank_you:
+  - text: And that was the last question {NAME}. Thank you so much for your time.
 actions:
 - action_admissions_query_submit
 - validate_student_admissions_form
+- student_information_form_submit
+- validate_student_information_form
 forms:
   student_admissions_form:
     GPE:
@@ -91,4 +140,25 @@ forms:
     ORG:
     - entity: ORG
       type: from_entity
-    
+    PROGRAM:
+    - entity: PROGRAM
+      type: from_entity
+  student_information_form:
+    HIGHESTDEGREE:
+    - entity: HIGHESTDEGREE
+      type: from_entity
+    INTAKE:
+    - entity: INTAKE
+      type: from_entity
+    ISALREADYAPPLIED:
+    - entity: ISALREADYAPPLIED
+      type: from_entity
+    NAME:
+    - entity: NAME
+      type: from_entity
+    ORG:
+    - entity: ORG
+      type: from_entity
+    PROGRAM:
+    - entity: PROGRAM
+      type: from_entity

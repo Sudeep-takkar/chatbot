@@ -29,3 +29,9 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
+# - story: student admissions form  
+#   steps:
+#   - intent: admissions_query
+#   - slot_was_set:
+#     - PROGRAM: "process quality engineering"
+#   - action: utter_ask_student_information_form_NAME
